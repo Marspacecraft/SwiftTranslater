@@ -2,15 +2,13 @@
  swift文件注释翻译
 
 # 安装
--安装[nlohmann-json](https://github.com/nlohmann/json)  
--安装python3  
--安装
-`
-make build && cd build  
-cmake ..  
-make  
-make install
-`
+***安装[nlohmann-json](https://github.com/nlohmann/json)***  
+***安装python3***  
+***安装***  
+`make build && cd build`  
+`cmake ..`  
+`make`  
+`make install`  
 # 用法  
 ## 分析文件  
 `swifttrans SwfitUI.swift`  
