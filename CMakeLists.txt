@@ -1,9 +1,12 @@
 cmake_minimum_required(VERSION 3.10)
 project(SwiftTranslater)
 set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
 include(ExternalProject)
 
 set(HOME_PATH $ENV{HOME})
+
+option(GTEST "Build Google test program" OFF)
 
 # 下载ColorCout
 set(COLORCOUT_SOURCE_DIR ${PROJECT_SOURCE_DIR}/ColorCout)
@@ -34,7 +37,13 @@ endif()
 add_subdirectory(ColorCout)
 include_directories(${PROJECT_SOURCE_DIR}/include)
 file(GLOB SOURCES "${PROJECT_SOURCE_DIR}/src/*.cpp")
-add_executable(swifttrans swifttranslater.cpp ${SOURCES})
+if(GTEST)
+    add_definitions(-DGOOGLE_TEST)
+    add_library(swifttrans STATIC swifttranslater.cpp ${SOURCES})
+else()
+    add_executable(swifttrans swifttranslater.cpp ${SOURCES})
+endif()
+
 target_link_libraries(swifttrans ccout)
 
 # 设置编译选项
@@ -77,3 +86,16 @@ add_custom_target(debug
     COMMAND make clean && cmake -DCMAKE_BUILD_TYPE=Debug .. && make &)
 add_custom_target(release
     COMMAND make clean && cmake -DCMAKE_BUILD_TYPE=Release .. && make &)
+
+if(GTEST)
+    message(STATUS "Create google test program-MyTests...")
+    link_directories("/usr/local/lib")
+    # 添加测试可执行文件
+    add_executable(MyTests gtest/test_main.cpp ${SOURCES})
+    # 链接 Google Test 库
+    target_link_libraries(MyTests swifttrans gtest_main gtest)
+endif()
+
+
+
+

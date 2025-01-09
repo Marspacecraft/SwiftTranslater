@@ -100,6 +100,7 @@ void Search(std::string keyword)
     }
 }
 
+#ifndef GOOGLE_TEST
 int main(int argc,char* argv[])
 {
     if(argc < 2)
@@ -120,4 +121,4 @@ int main(int argc,char* argv[])
     Search(argv[1]);
     return 0;
 }
-
+#endif
