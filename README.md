@@ -3,7 +3,7 @@
 
 # 安装
 -安装[nlohmann-json](https://github.com/nlohmann/json)  
--安装python3
+-安装python3  
 `
 make build && cd build  
 cmake ..  
