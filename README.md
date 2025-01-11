@@ -8,7 +8,7 @@
 - 安装 [nlohmann-json](https://github.com/nlohmann/json)  
 - 安装 python3  
 - 安装命令  
-`make build && cd build`  
+`mkdir build && cd build`  
 `cmake ..`  
 `make`  
 `make install`  
