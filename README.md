@@ -14,7 +14,7 @@
 `make install`  
 # 用法  
 ## 分析文件  
-`swifttrans SwfitUI.swift`  
+`swifttrans -p SwfitUI.swift`  
 ## 查询关键字  
 `swifttrans "withTransaction<Result>"`  
 ![结果](https://github.com/Marspacecraft/SwiftTranslater/blob/main/pic.png)   
